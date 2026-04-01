@@ -2,42 +2,44 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>人生 攻略Wiki</title>
+<title>人生（チュートリアル編）攻略Wiki</title>
 
 <style>
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: Arial;
     background: #f6f6f6;
-    transition: 0.3s;
-}
-
-.dark {
-    background: #1e1e1e;
-    color: white;
 }
 
 header {
     background: #2a4b8d;
     color: white;
     padding: 15px;
+    font-size: 22px;
+}
+
+.sub {
+    background: #ddd;
+    padding: 5px;
+    font-size: 13px;
 }
 
 .container {
     display: flex;
-    flex-wrap: wrap;
 }
 
 .sidebar {
-    width: 220px;
+    width: 250px;
     background: #e9eef6;
     padding: 10px;
+    height: 100vh;
+    overflow-y: auto;
 }
 
 .sidebar button {
     width: 100%;
     margin-bottom: 5px;
-    padding: 10px;
+    padding: 8px;
     border: none;
     background: #2a4b8d;
     color: white;
@@ -49,56 +51,140 @@ header {
     background: white;
 }
 
-.page { display: none; }
-.active { display: block; }
+.page { display:none; }
+.active { display:block; }
+
+.box {
+    background: #f0f4ff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #2a4b8d;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
 
 .bar {
     height: 20px;
     background: green;
-    margin-bottom: 5px;
 }
 
 .comment {
-    background: #ddd;
-    margin-top: 5px;
+    background: #eee;
     padding: 5px;
-}
-
-@media(max-width: 800px){
-    .sidebar { width: 100%; }
+    margin-top: 5px;
 }
 </style>
-
 </head>
 
 <body>
 
-<header>
-人生（チュートリアル編）攻略Wiki
-<button onclick="toggleDark()">🌙</button>
-</header>
+<header>人生（チュートリアル編）攻略Wiki</header>
+<div class="sub">最終更新：2026/04/01｜検証勢募集中</div>
 
 <div class="container">
 
+<!-- サイドバー -->
 <div class="sidebar">
-<input type="text" id="search" placeholder="検索..." onkeyup="search()">
+<b>メニュー</b><br><br>
 <button onclick="showPage('top')">トップ</button>
+<button onclick="showPage('system')">システム</button>
+<button onclick="showPage('skills')">スキル</button>
+<button onclick="showPage('boss')">ボス</button>
+<button onclick="showPage('bug')">バグ</button>
 <button onclick="showPage('comments')">コメント</button>
 </div>
 
+<!-- コンテンツ -->
 <div class="content">
 
+<!-- トップ -->
 <div id="top" class="page active">
-<h2>ステータス</h2>
+<h2>概要</h2>
 
-やる気
-<div class="bar" id="motivationBar" style="width:50%"></div>
-
-<button onclick="recover()">回復</button>
+<div class="box">
+本作はチュートリアルが終わらないことで知られるゲーム。<br>
+生活習慣によりステータスが変化する。<br>
+メインクエストは未解放。
 </div>
 
+<h3>ステータス</h3>
+HP<div class="bar" style="width:80%"></div>
+MP<div class="bar" style="width:60%; background:blue;"></div>
+やる気<div class="bar" id="motivationBar" style="width:50%; background:orange;"></div>
+
+<button onclick="recover()">やる気回復</button>
+</div>
+
+<!-- システム -->
+<div id="system" class="page">
+<h2>システム</h2>
+<div class="box">
+・デイリークエスト：起床、食事、活動<br>
+・デバフ：疲労、ストレス、先延ばし<br>
+・リセット不可<br>
+</div>
+</div>
+
+<!-- スキル -->
+<div id="skills" class="page">
+<h2>スキル一覧</h2>
+
+<table class="table">
+<tr><th>スキル名</th><th>効果</th><th>状態</th></tr>
+<tr><td>早起き</td><td>行動時間増加</td><td>Lv3</td></tr>
+<tr><td>集中力</td><td>効率アップ</td><td>不安定</td></tr>
+<tr><td>先延ばし</td><td>行動キャンセル</td><td>常時発動</td></tr>
+<tr><td>やる気</td><td>全能力上昇</td><td>低確率発動</td></tr>
+</table>
+
+</div>
+
+<!-- ボス -->
+<div id="boss" class="page">
+<h2>ボス情報</h2>
+
+<table class="table">
+<tr><th>名前</th><th>特徴</th><th>対策</th></tr>
+<tr>
+<td>締切</td>
+<td>突然出現・回避不可</td>
+<td>事前準備</td>
+</tr>
+<tr>
+<td>人間関係</td>
+<td>長期戦・精神ダメージ</td>
+<td>距離管理</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>ラスボス候補・不明</td>
+<td>未確定</td>
+</tr>
+</table>
+
+</div>
+
+<!-- バグ -->
+<div id="bug" class="page">
+<h2>バグ報告</h2>
+<div class="box">
+・やる気があるのに動けない<br>
+・努力が反映されない<br>
+・あと5分ループ<br>
+</div>
+</div>
+
+<!-- コメント -->
 <div id="comments" class="page">
-<h2>コメント</h2>
+<h2>コメント欄</h2>
 
 <textarea id="input"></textarea><br>
 <button onclick="addComment()">投稿</button>
@@ -116,26 +202,24 @@ function showPage(id){
     document.getElementById(id).classList.add('active');
 }
 
-// ダークモード
-function toggleDark(){
-    document.body.classList.toggle("dark");
-}
+// やる気
+let motivation = localStorage.getItem("motivation") || 50;
 
-// やる気ゲージ
-let motivation = 50;
+function updateBar(){
+    document.getElementById("motivationBar").style.width = motivation + "%";
+}
+updateBar();
 
 setInterval(()=>{
     motivation = Math.max(0, motivation - 1);
+    localStorage.setItem("motivation", motivation);
     updateBar();
 },3000);
 
 function recover(){
-    motivation = Math.min(100, motivation + 20);
+    motivation = Math.min(100, Number(motivation) + 20);
+    localStorage.setItem("motivation", motivation);
     updateBar();
-}
-
-function updateBar(){
-    document.getElementById("motivationBar").style.width = motivation + "%";
 }
 
 // コメント保存
@@ -143,9 +227,9 @@ function addComment(){
     let text = document.getElementById("input").value;
     if(!text) return;
 
-    let comments = JSON.parse(localStorage.getItem("comments") || "[]");
-    comments.unshift(text);
-    localStorage.setItem("comments", JSON.stringify(comments));
+    let data = JSON.parse(localStorage.getItem("comments") || "[]");
+    data.unshift(text);
+    localStorage.setItem("comments", JSON.stringify(data));
 
     document.getElementById("input").value = "";
     loadComments();
@@ -155,8 +239,8 @@ function loadComments(){
     let list = document.getElementById("list");
     list.innerHTML = "";
 
-    let comments = JSON.parse(localStorage.getItem("comments") || "[]");
-    comments.forEach(c=>{
+    let data = JSON.parse(localStorage.getItem("comments") || "[]");
+    data.forEach(c=>{
         let div = document.createElement("div");
         div.className = "comment";
         div.textContent = c;
@@ -165,14 +249,6 @@ function loadComments(){
 }
 
 loadComments();
-
-// 検索（簡易）
-function search(){
-    let q = document.getElementById("search").value.toLowerCase();
-    document.querySelectorAll(".content").forEach(c=>{
-        c.style.display = c.innerText.toLowerCase().includes(q) ? "block" : "none";
-    });
-}
 </script>
 
 </body>
