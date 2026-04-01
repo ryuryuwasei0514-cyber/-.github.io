@@ -5,118 +5,54 @@
 <title>人生（チュートリアル編）攻略Wiki</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f6f6f6;
-}
+body { margin:0; font-family:Arial; background:#f6f6f6; }
+header { background:#2a4b8d; color:white; padding:15px; font-size:22px; }
+.subheader { background:#ddd; padding:5px; font-size:12px; }
+.container { display:flex; }
 
-header {
-    background: #2a4b8d;
-    color: white;
-    padding: 15px;
-    font-size: 22px;
-}
-
-.subheader {
-    background: #ddd;
-    padding: 5px;
-    font-size: 12px;
-}
-
-.container {
-    display: flex;
-}
-
-/* サイドバー */
 .sidebar {
-    width: 250px;
-    background: #e9eef6;
-    padding: 10px;
-    height: 100vh;
-    overflow-y: auto;
-}
-
-.sidebar h3 {
-    margin-top: 0;
+    width:250px; background:#e9eef6;
+    padding:10px; height:100vh; overflow-y:auto;
 }
 
 .sidebar button {
-    width: 100%;
-    margin-bottom: 5px;
-    padding: 8px;
-    border: none;
-    background: #2a4b8d;
-    color: white;
-    cursor: pointer;
+    width:100%; margin-bottom:5px;
+    padding:8px; border:none;
+    background:#2a4b8d; color:white;
 }
 
-/* メイン */
-.content {
-    flex: 1;
-    padding: 20px;
-    background: white;
-}
+.content { flex:1; padding:20px; background:white; }
 
-/* ページ切替 */
-.page { display: none; }
-.active { display: block; }
+.page { display:none; }
+.active { display:block; }
 
-/* Wiki風 */
 .box {
-    background: #f0f4ff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-left: 5px solid #2a4b8d;
+    background:#f0f4ff;
+    padding:10px;
+    margin-bottom:10px;
+    border-left:5px solid #2a4b8d;
 }
 
-.table {
-    width: 100%;
-    border-collapse: collapse;
-}
+.table { width:100%; border-collapse:collapse; }
+.table th,.table td { border:1px solid #ccc; padding:6px; }
 
-.table th, .table td {
-    border: 1px solid #ccc;
-    padding: 6px;
-}
+.breadcrumb { font-size:12px; margin-bottom:10px; }
+.comment { background:#eee; padding:5px; margin-top:5px; }
 
-/* ステータスバー */
-.bar {
-    height: 20px;
-    margin-bottom: 5px;
-    background: green;
-}
-
-/* コメント */
-.comment {
-    background: #eee;
-    padding: 5px;
-    margin-top: 5px;
-}
-
-/* パンくず */
-.breadcrumb {
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-/* スマホ対応 */
 @media(max-width:800px){
-    .container { flex-direction: column; }
-    .sidebar { width: 100%; height: auto; }
+    .container{flex-direction:column;}
+    .sidebar{width:100%; height:auto;}
 }
 </style>
-
 </head>
 
 <body>
 
 <header>人生（チュートリアル編）攻略Wiki</header>
-<div class="subheader">最終更新：2026/04/01｜有志編集型Wiki</div>
+<div class="subheader">※本Wikiは有志による検証情報を元に構成されています。正確性は保証されません。</div>
 
 <div class="container">
 
-<!-- サイドバー -->
 <div class="sidebar">
 <h3>メニュー</h3>
 <button onclick="showPage('top')">トップ</button>
@@ -127,118 +63,163 @@ header {
 <button onclick="showPage('comments')">コメント</button>
 </div>
 
-<!-- メイン -->
 <div class="content">
 
 <!-- トップ -->
 <div id="top" class="page active">
-
 <div class="breadcrumb">トップ > 人生 > チュートリアル編</div>
 
 <h2>概要</h2>
 <div class="box">
-本作はチュートリアルが極端に長いことで知られるゲーム。<br>
-生活行動により各種ステータスが変動する。<br>
-メインクエストは現時点で未解放とされている。
+本作は「チュートリアルが終了しない」という前代未聞の仕様を持つタイトル。<br>
+プレイヤーは開始直後から自由行動が可能であるが、自由すぎるがゆえに目的を見失うケースが多発している。<br><br>
+
+特筆すべき点として、本作には明確なUIが存在せず、ステータスや進行度は完全にブラックボックス化している。<br>
+そのため、プレイヤーは自ら仮説を立て、検証し続ける必要がある。<br><br>
+
+なお、「これがチュートリアルである」という公式声明は確認されていないが、<br>
+コミュニティ内ではほぼ確定事項として扱われている。
 </div>
 
-<h3>基本ステータス</h3>
-<table class="table">
-<tr><th>項目</th><th>説明</th></tr>
-<tr><td>HP</td><td>体力。0になると行動不能。</td></tr>
-<tr><td>MP</td><td>メンタル。低下で判断力低下。</td></tr>
-<tr><td>やる気</td><td>行動成功率に影響。</td></tr>
-</table>
+<h2>プレイヤーの主な詰みポイント</h2>
+<div class="box">
+・序盤で目的を設定できず進行停止<br>
+・中盤で「これ何ゲー？」状態に陥る<br>
+・終盤（とされる領域）で分岐の多さにより選択不能になる<br><br>
 
-<h3>現在の状態</h3>
-HP<div class="bar" style="width:80%"></div>
-MP<div class="bar" style="width:60%; background:blue;"></div>
-やる気<div id="motivationBar" class="bar" style="width:50%; background:orange;"></div>
-
-<button onclick="recover()">やる気回復</button>
+※これらは仕様の可能性が高く、修正予定はないと考えられる
+</div>
 
 </div>
 
 <!-- システム -->
 <div id="system" class="page">
-
 <div class="breadcrumb">トップ > システム</div>
 
-<h2>ゲームシステム</h2>
+<h2>ゲームシステム考察</h2>
 
 <div class="box">
-・デイリークエスト：起床、食事、活動<br>
-・デバフ：疲労、ストレス、先延ばし<br>
-・リセット不可仕様
+本作の最大の特徴は「ルール説明の欠如」にある。<br>
+一般的なゲームに存在するチュートリアルメッセージやガイドは一切表示されない。<br><br>
+
+その代わりとして、プレイヤーは以下のような“暗黙ルール”を徐々に理解していく必要がある：
+</div>
+
+<table class="table">
+<tr><th>要素</th><th>詳細</th><th>備考</th></tr>
+
+<tr>
+<td>行動結果</td>
+<td>即時反映されない。数日〜数年単位で変化が現れる。</td>
+<td>最も理解が難しい要素</td>
+</tr>
+
+<tr>
+<td>デバフ</td>
+<td>疲労・ストレスなど。重複可能。</td>
+<td>放置で悪化</td>
+</tr>
+
+<tr>
+<td>環境依存</td>
+<td>他プレイヤーや環境によって難易度変化</td>
+<td>個体差大</td>
+</tr>
+
+</table>
+
+<div class="box">
+※プレイヤー間で仕様が異なる可能性が指摘されている（未検証）
 </div>
 
 </div>
 
 <!-- スキル -->
 <div id="skills" class="page">
-
 <div class="breadcrumb">トップ > スキル</div>
 
-<h2>スキル一覧</h2>
+<h2>スキル詳細考察</h2>
 
 <table class="table">
-<tr><th>スキル名</th><th>効果</th><th>備考</th></tr>
-<tr><td>早起き</td><td>行動時間増加</td><td>継続で強化</td></tr>
-<tr><td>集中力</td><td>効率向上</td><td>環境依存</td></tr>
-<tr><td>先延ばし</td><td>行動キャンセル</td><td>デバフ</td></tr>
-<tr><td>やる気</td><td>全能力上昇</td><td>低確率発動</td></tr>
+<tr><th>スキル名</th><th>効果</th><th>発動条件</th><th>検証状況</th></tr>
+
+<tr>
+<td>やる気</td>
+<td>全行動成功率上昇</td>
+<td>完全ランダム</td>
+<td>再現不可</td>
+</tr>
+
+<tr>
+<td>先延ばし</td>
+<td>行動を強制キャンセル</td>
+<td>高頻度発動</td>
+<td>ほぼ確定で発生</td>
+</tr>
+
+<tr>
+<td>集中力</td>
+<td>作業効率増加</td>
+<td>環境・体調依存</td>
+<td>条件未確定</td>
+</tr>
+
 </table>
+
+<div class="box">
+特に「やる気」は本作における最重要スキルとされているが、<br>
+発動条件が完全にランダムであるため、実質的に制御不能である。
+</div>
 
 </div>
 
 <!-- ボス -->
 <div id="boss" class="page">
-
 <div class="breadcrumb">トップ > ボス</div>
 
-<h2>ボス攻略</h2>
+<h2>ボス攻略情報</h2>
 
 <div class="box">
 <h3>締切</h3>
-特徴：突然出現、回避不可<br>
-攻撃：精神ダメージ（大）<br>
-対策：事前準備、分割処理
-</div>
+発生条件：進行不足、またはタスク放置<br>
+特徴：警告なしで出現する奇襲型ボス<br>
+攻撃：精神的圧迫、行動制限<br>
+難易度：極めて高い（準備不足時は即敗北）<br><br>
 
-<div class="box">
-<h3>人間関係</h3>
-特徴：長期戦<br>
-攻撃：継続ダメージ<br>
-対策：距離管理
+備考：最も多くのプレイヤーが敗北するボスの一つ
 </div>
 
 <div class="box">
 <h3>将来</h3>
-特徴：ラスボス候補<br>
-状態：未解明
+発生条件：不明（進行に応じて徐々に出現）<br>
+特徴：情報不足、攻略法未確立<br>
+攻撃：不安・選択圧迫・思考停止<br>
+難易度：測定不能<br><br>
+
+備考：ラスボス候補とされるが、確認例なし
 </div>
 
 </div>
 
 <!-- バグ -->
 <div id="bug" class="page">
-
 <div class="breadcrumb">トップ > バグ</div>
 
-<h2>既知のバグ</h2>
+<h2>既知のバグ・仕様</h2>
 
 <div class="box">
-・やる気があるのに動けない<br>
-・努力が反映されない<br>
-・あと5分ループ<br>
-・本番でスキルが発動しない
+・やる気があるにも関わらず行動不能になる（頻出）<br>
+・同一条件でも結果が変動する（再現性なし）<br>
+・「あと5分」が無限に繰り返される<br>
+・努力値が内部でロストする可能性あり<br><br>
+
+※これらはバグではなく仕様である可能性が高い
 </div>
 
 </div>
 
 <!-- コメント -->
 <div id="comments" class="page">
-
 <div class="breadcrumb">トップ > コメント</div>
 
 <h2>コメント欄</h2>
@@ -254,54 +235,32 @@ MP<div class="bar" style="width:60%; background:blue;"></div>
 </div>
 
 <script>
-// ページ切替
 function showPage(id){
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     document.getElementById(id).classList.add('active');
 }
 
-// やる気
-let motivation = localStorage.getItem("motivation") || 50;
-
-function updateBar(){
-    document.getElementById("motivationBar").style.width = motivation + "%";
-}
-updateBar();
-
-setInterval(()=>{
-    motivation = Math.max(0, motivation - 1);
-    localStorage.setItem("motivation", motivation);
-    updateBar();
-},3000);
-
-function recover(){
-    motivation = Math.min(100, Number(motivation) + 20);
-    localStorage.setItem("motivation", motivation);
-    updateBar();
-}
-
-// コメント保存
 function addComment(){
-    let text = document.getElementById("input").value;
-    if(!text) return;
+    let text=document.getElementById("input").value;
+    if(!text)return;
 
-    let data = JSON.parse(localStorage.getItem("comments") || "[]");
+    let data=JSON.parse(localStorage.getItem("comments")||"[]");
     data.unshift(text);
-    localStorage.setItem("comments", JSON.stringify(data));
+    localStorage.setItem("comments",JSON.stringify(data));
 
-    document.getElementById("input").value = "";
+    document.getElementById("input").value="";
     loadComments();
 }
 
 function loadComments(){
-    let list = document.getElementById("list");
-    list.innerHTML = "";
+    let list=document.getElementById("list");
+    list.innerHTML="";
 
-    let data = JSON.parse(localStorage.getItem("comments") || "[]");
+    let data=JSON.parse(localStorage.getItem("comments")||"[]");
     data.forEach(c=>{
-        let div = document.createElement("div");
-        div.className = "comment";
-        div.textContent = c;
+        let div=document.createElement("div");
+        div.className="comment";
+        div.textContent=c;
         list.appendChild(div);
     });
 }
