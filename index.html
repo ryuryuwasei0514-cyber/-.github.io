@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>人生 攻略Wiki</title>
+
+<style>
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background: #f6f6f6;
+}
+
+header {
+    background: #2a4b8d;
+    color: white;
+    padding: 15px;
+    font-size: 22px;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    background: #e9eef6;
+    padding: 10px;
+}
+
+.sidebar button {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 10px;
+    border: none;
+    background: #2a4b8d;
+    color: white;
+    cursor: pointer;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background: white;
+}
+
+.page {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.box {
+    background: #f0f4ff;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid #2a4b8d;
+}
+
+.bug {
+    background: #fff0f0;
+    border-left: 5px solid red;
+}
+
+.comment-box {
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+}
+
+.comment {
+    background: #eee;
+    padding: 8px;
+    margin-top: 5px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>人生（チュートリアル編）攻略Wiki</header>
+
+<div class="container">
+
+<div class="sidebar">
+<button onclick="showPage('top')">トップ</button>
+<button onclick="showPage('guide')">初心者ガイド</button>
+<button onclick="showPage('strategy')">進め方</button>
+<button onclick="showPage('bug')">バグ報告</button>
+<button onclick="showPage('comments')">コメント</button>
+</div>
+
+<div class="content">
+
+<!-- トップ -->
+<div id="top" class="page active">
+<h2>概要</h2>
+<div class="box">
+人生はチュートリアルが終わらないゲームです。<br>
+HP（体力）とMP（メンタル）の管理が重要です。<br>
+メインクエストは未解放です。
+</div>
+</div>
+
+<!-- 初心者 -->
+<div id="guide" class="page">
+<h2>初心者ガイド</h2>
+<div class="box">
+・毎日ログイン（起床）<br>
+・食事で回復<br>
+・無理するとデバフ発生
+</div>
+</div>
+
+<!-- 進め方 -->
+<div id="strategy" class="page">
+<h2>効率的な進め方</h2>
+<div class="box">
+・バランス型ビルド推奨<br>
+・リセット不可<br>
+・長期戦
+</div>
+</div>
+
+<!-- バグ -->
+<div id="bug" class="page">
+<h2>バグ報告</h2>
+<div class="box bug">
+・やる気があるのに動けない<br>
+・あと5分が無限ループ<br>
+・努力が反映されない
+</div>
+</div>
+
+<!-- コメント -->
+<div id="comments" class="page">
+<h2>コメント欄</h2>
+
+<div class="comment-box">
+<textarea id="commentInput" placeholder="コメントを書く"></textarea>
+<button onclick="addComment()">投稿</button>
+</div>
+
+<div id="commentList"></div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+}
+
+function addComment() {
+    const input = document.getElementById("commentInput");
+    const text = input.value.trim();
+
+    if (text === "") return;
+
+    const commentList = document.getElementById("commentList");
+
+    const newComment = document.createElement("div");
+    newComment.className = "comment";
+    newComment.textContent = text;
+
+    commentList.prepend(newComment);
+
+    input.value = "";
+}
+</script>
+
+</body>
+</html>
