@@ -8,20 +8,32 @@
 body { margin:0; font-family:Arial; background:#f6f6f6; }
 header { background:#2a4b8d; color:white; padding:15px; font-size:22px; }
 .subheader { background:#ddd; padding:5px; font-size:12px; }
+
 .container { display:flex; }
 
 .sidebar {
-    width:250px; background:#e9eef6;
-    padding:10px; height:100vh; overflow-y:auto;
+    width:250px;
+    background:#e9eef6;
+    padding:10px;
+    height:100vh;
+    overflow-y:auto;
 }
 
 .sidebar button {
-    width:100%; margin-bottom:5px;
-    padding:8px; border:none;
-    background:#2a4b8d; color:white;
+    width:100%;
+    margin-bottom:5px;
+    padding:8px;
+    border:none;
+    background:#2a4b8d;
+    color:white;
+    cursor:pointer;
 }
 
-.content { flex:1; padding:20px; background:white; }
+.content {
+    flex:1;
+    padding:20px;
+    background:white;
+}
 
 .page { display:none; }
 .active { display:block; }
@@ -33,11 +45,22 @@ header { background:#2a4b8d; color:white; padding:15px; font-size:22px; }
     border-left:5px solid #2a4b8d;
 }
 
-.table { width:100%; border-collapse:collapse; }
-.table th,.table td { border:1px solid #ccc; padding:6px; }
+.table {
+    width:100%;
+    border-collapse:collapse;
+}
+.table th, .table td {
+    border:1px solid #ccc;
+    padding:6px;
+}
 
 .breadcrumb { font-size:12px; margin-bottom:10px; }
-.comment { background:#eee; padding:5px; margin-top:5px; }
+
+.comment {
+    background:#eee;
+    padding:5px;
+    margin-top:5px;
+}
 
 @media(max-width:800px){
     .container{flex-direction:column;}
@@ -49,7 +72,7 @@ header { background:#2a4b8d; color:white; padding:15px; font-size:22px; }
 <body>
 
 <header>人生（チュートリアル編）攻略Wiki</header>
-<div class="subheader">※本Wikiは有志による検証情報を元に構成されています。正確性は保証されません。</div>
+<div class="subheader">※本Wikiは検証勢による非公式情報です。仕様はプレイヤーごとに異なる可能性があります。</div>
 
 <div class="container">
 
@@ -71,23 +94,23 @@ header { background:#2a4b8d; color:white; padding:15px; font-size:22px; }
 
 <h2>概要</h2>
 <div class="box">
-本作は「チュートリアルが終了しない」という前代未聞の仕様を持つタイトル。<br>
-プレイヤーは開始直後から自由行動が可能であるが、自由すぎるがゆえに目的を見失うケースが多発している。<br><br>
-
-特筆すべき点として、本作には明確なUIが存在せず、ステータスや進行度は完全にブラックボックス化している。<br>
-そのため、プレイヤーは自ら仮説を立て、検証し続ける必要がある。<br><br>
-
-なお、「これがチュートリアルである」という公式声明は確認されていないが、<br>
-コミュニティ内ではほぼ確定事項として扱われている。
+本作はチュートリアルが終了しないことで知られる長期進行型タイトル。<br>
+プレイヤーは自由に行動できるが、目的や進行条件は明示されない。<br><br>
+結果として「何をすればいいのか分からない」という状態が仕様として組み込まれている可能性が高い。
 </div>
 
-<h2>プレイヤーの主な詰みポイント</h2>
+<h2>詰みポイント</h2>
 <div class="box">
-・序盤で目的を設定できず進行停止<br>
-・中盤で「これ何ゲー？」状態に陥る<br>
-・終盤（とされる領域）で分岐の多さにより選択不能になる<br><br>
+・目的未設定による進行停止<br>
+・選択肢過多による思考停止<br>
+・中盤以降の難易度急上昇<br>
+</div>
 
-※これらは仕様の可能性が高く、修正予定はないと考えられる
+<h2>基本戦略</h2>
+<div class="box">
+・短期結果ではなく長期蓄積を重視<br>
+・環境適応能力の強化<br>
+・失敗前提での行動設計<br>
 </div>
 
 </div>
@@ -96,40 +119,39 @@ header { background:#2a4b8d; color:white; padding:15px; font-size:22px; }
 <div id="system" class="page">
 <div class="breadcrumb">トップ > システム</div>
 
-<h2>ゲームシステム考察</h2>
-
-<div class="box">
-本作の最大の特徴は「ルール説明の欠如」にある。<br>
-一般的なゲームに存在するチュートリアルメッセージやガイドは一切表示されない。<br><br>
-
-その代わりとして、プレイヤーは以下のような“暗黙ルール”を徐々に理解していく必要がある：
-</div>
+<h2>システム詳細</h2>
 
 <table class="table">
-<tr><th>要素</th><th>詳細</th><th>備考</th></tr>
+<tr><th>要素</th><th>内容</th><th>備考</th></tr>
 
 <tr>
 <td>行動結果</td>
-<td>即時反映されない。数日〜数年単位で変化が現れる。</td>
-<td>最も理解が難しい要素</td>
+<td>遅延して反映される（数日〜数年）</td>
+<td>因果関係不明瞭</td>
 </tr>
 
 <tr>
 <td>デバフ</td>
-<td>疲労・ストレスなど。重複可能。</td>
-<td>放置で悪化</td>
+<td>疲労・ストレスなどが蓄積</td>
+<td>解除困難</td>
 </tr>
 
 <tr>
 <td>環境依存</td>
-<td>他プレイヤーや環境によって難易度変化</td>
-<td>個体差大</td>
+<td>他プレイヤーの影響が大きい</td>
+<td>個体差あり</td>
+</tr>
+
+<tr>
+<td>時間</td>
+<td>リアルタイム進行・停止不可</td>
+<td>最重要制約</td>
 </tr>
 
 </table>
 
 <div class="box">
-※プレイヤー間で仕様が異なる可能性が指摘されている（未検証）
+隠しパラメータ（信頼・習慣など）の存在が示唆されているが、詳細は未解明。
 </div>
 
 </div>
@@ -138,38 +160,47 @@ header { background:#2a4b8d; color:white; padding:15px; font-size:22px; }
 <div id="skills" class="page">
 <div class="breadcrumb">トップ > スキル</div>
 
-<h2>スキル詳細考察</h2>
+<h2>スキル一覧</h2>
 
 <table class="table">
-<tr><th>スキル名</th><th>効果</th><th>発動条件</th><th>検証状況</th></tr>
+<tr><th>スキル</th><th>効果</th><th>条件</th><th>評価</th></tr>
 
 <tr>
 <td>やる気</td>
-<td>全行動成功率上昇</td>
-<td>完全ランダム</td>
-<td>再現不可</td>
+<td>全能力上昇</td>
+<td>ランダム</td>
+<td>制御不可</td>
 </tr>
 
 <tr>
 <td>先延ばし</td>
-<td>行動を強制キャンセル</td>
-<td>高頻度発動</td>
-<td>ほぼ確定で発生</td>
+<td>行動キャンセル</td>
+<td>高頻度</td>
+<td>最大の敵</td>
+</tr>
+
+<tr>
+<td>継続力</td>
+<td>長期成果増加</td>
+<td>反復行動</td>
+<td>最重要</td>
+</tr>
+
+<tr>
+<td>現実逃避</td>
+<td>ストレス軽減</td>
+<td>疲労時</td>
+<td>副作用あり</td>
 </tr>
 
 <tr>
 <td>集中力</td>
-<td>作業効率増加</td>
-<td>環境・体調依存</td>
-<td>条件未確定</td>
+<td>効率上昇</td>
+<td>環境依存</td>
+<td>再現困難</td>
 </tr>
 
 </table>
-
-<div class="box">
-特に「やる気」は本作における最重要スキルとされているが、<br>
-発動条件が完全にランダムであるため、実質的に制御不能である。
-</div>
 
 </div>
 
@@ -177,26 +208,31 @@ header { background:#2a4b8d; color:white; padding:15px; font-size:22px; }
 <div id="boss" class="page">
 <div class="breadcrumb">トップ > ボス</div>
 
-<h2>ボス攻略情報</h2>
+<h2>ボス一覧</h2>
 
 <div class="box">
 <h3>締切</h3>
-発生条件：進行不足、またはタスク放置<br>
-特徴：警告なしで出現する奇襲型ボス<br>
-攻撃：精神的圧迫、行動制限<br>
-難易度：極めて高い（準備不足時は即敗北）<br><br>
+突然出現する高難易度ボス。準備不足の場合即敗北。
+</div>
 
-備考：最も多くのプレイヤーが敗北するボスの一つ
+<div class="box">
+<h3>月曜日</h3>
+定期的に出現。やる気デバフを付与。
+</div>
+
+<div class="box">
+<h3>SNS</h3>
+時間吸収型ボス。長期戦で致命的。
+</div>
+
+<div class="box">
+<h3>過去の自分</h3>
+回想時に出現。精神ダメージが極めて高い。
 </div>
 
 <div class="box">
 <h3>将来</h3>
-発生条件：不明（進行に応じて徐々に出現）<br>
-特徴：情報不足、攻略法未確立<br>
-攻撃：不安・選択圧迫・思考停止<br>
-難易度：測定不能<br><br>
-
-備考：ラスボス候補とされるが、確認例なし
+ラスボス候補。情報不足。
 </div>
 
 </div>
@@ -205,15 +241,14 @@ header { background:#2a4b8d; color:white; padding:15px; font-size:22px; }
 <div id="bug" class="page">
 <div class="breadcrumb">トップ > バグ</div>
 
-<h2>既知のバグ・仕様</h2>
+<h2>既知の不具合</h2>
 
 <div class="box">
-・やる気があるにも関わらず行動不能になる（頻出）<br>
-・同一条件でも結果が変動する（再現性なし）<br>
-・「あと5分」が無限に繰り返される<br>
-・努力値が内部でロストする可能性あり<br><br>
-
-※これらはバグではなく仕様である可能性が高い
+・あと5分が無限に続く<br>
+・やる気が突然消失する<br>
+・努力が反映されない場合がある<br>
+・成功の持続時間が極端に短い<br>
+・同一条件でも結果が変動する<br>
 </div>
 
 </div>
