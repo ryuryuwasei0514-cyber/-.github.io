@@ -7,7 +7,7 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     background: #f6f6f6;
 }
 
@@ -18,22 +18,27 @@ header {
     font-size: 22px;
 }
 
-.sub {
+.subheader {
     background: #ddd;
     padding: 5px;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .container {
     display: flex;
 }
 
+/* サイドバー */
 .sidebar {
     width: 250px;
     background: #e9eef6;
     padding: 10px;
     height: 100vh;
     overflow-y: auto;
+}
+
+.sidebar h3 {
+    margin-top: 0;
 }
 
 .sidebar button {
@@ -43,17 +48,21 @@ header {
     border: none;
     background: #2a4b8d;
     color: white;
+    cursor: pointer;
 }
 
+/* メイン */
 .content {
     flex: 1;
     padding: 20px;
     background: white;
 }
 
-.page { display:none; }
-.active { display:block; }
+/* ページ切替 */
+.page { display: none; }
+.active { display: block; }
 
+/* Wiki風 */
 .box {
     background: #f0f4ff;
     padding: 10px;
@@ -68,32 +77,48 @@ header {
 
 .table th, .table td {
     border: 1px solid #ccc;
-    padding: 5px;
+    padding: 6px;
 }
 
+/* ステータスバー */
 .bar {
     height: 20px;
+    margin-bottom: 5px;
     background: green;
 }
 
+/* コメント */
 .comment {
     background: #eee;
     padding: 5px;
     margin-top: 5px;
 }
+
+/* パンくず */
+.breadcrumb {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+/* スマホ対応 */
+@media(max-width:800px){
+    .container { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; }
+}
 </style>
+
 </head>
 
 <body>
 
 <header>人生（チュートリアル編）攻略Wiki</header>
-<div class="sub">最終更新：2026/04/01｜検証勢募集中</div>
+<div class="subheader">最終更新：2026/04/01｜有志編集型Wiki</div>
 
 <div class="container">
 
 <!-- サイドバー -->
 <div class="sidebar">
-<b>メニュー</b><br><br>
+<h3>メニュー</h3>
 <button onclick="showPage('top')">トップ</button>
 <button onclick="showPage('system')">システム</button>
 <button onclick="showPage('skills')">スキル</button>
@@ -102,46 +127,65 @@ header {
 <button onclick="showPage('comments')">コメント</button>
 </div>
 
-<!-- コンテンツ -->
+<!-- メイン -->
 <div class="content">
 
 <!-- トップ -->
 <div id="top" class="page active">
-<h2>概要</h2>
 
+<div class="breadcrumb">トップ > 人生 > チュートリアル編</div>
+
+<h2>概要</h2>
 <div class="box">
-本作はチュートリアルが終わらないことで知られるゲーム。<br>
-生活習慣によりステータスが変化する。<br>
-メインクエストは未解放。
+本作はチュートリアルが極端に長いことで知られるゲーム。<br>
+生活行動により各種ステータスが変動する。<br>
+メインクエストは現時点で未解放とされている。
 </div>
 
-<h3>ステータス</h3>
+<h3>基本ステータス</h3>
+<table class="table">
+<tr><th>項目</th><th>説明</th></tr>
+<tr><td>HP</td><td>体力。0になると行動不能。</td></tr>
+<tr><td>MP</td><td>メンタル。低下で判断力低下。</td></tr>
+<tr><td>やる気</td><td>行動成功率に影響。</td></tr>
+</table>
+
+<h3>現在の状態</h3>
 HP<div class="bar" style="width:80%"></div>
 MP<div class="bar" style="width:60%; background:blue;"></div>
-やる気<div class="bar" id="motivationBar" style="width:50%; background:orange;"></div>
+やる気<div id="motivationBar" class="bar" style="width:50%; background:orange;"></div>
 
 <button onclick="recover()">やる気回復</button>
+
 </div>
 
 <!-- システム -->
 <div id="system" class="page">
-<h2>システム</h2>
+
+<div class="breadcrumb">トップ > システム</div>
+
+<h2>ゲームシステム</h2>
+
 <div class="box">
 ・デイリークエスト：起床、食事、活動<br>
 ・デバフ：疲労、ストレス、先延ばし<br>
-・リセット不可<br>
+・リセット不可仕様
 </div>
+
 </div>
 
 <!-- スキル -->
 <div id="skills" class="page">
+
+<div class="breadcrumb">トップ > スキル</div>
+
 <h2>スキル一覧</h2>
 
 <table class="table">
-<tr><th>スキル名</th><th>効果</th><th>状態</th></tr>
-<tr><td>早起き</td><td>行動時間増加</td><td>Lv3</td></tr>
-<tr><td>集中力</td><td>効率アップ</td><td>不安定</td></tr>
-<tr><td>先延ばし</td><td>行動キャンセル</td><td>常時発動</td></tr>
+<tr><th>スキル名</th><th>効果</th><th>備考</th></tr>
+<tr><td>早起き</td><td>行動時間増加</td><td>継続で強化</td></tr>
+<tr><td>集中力</td><td>効率向上</td><td>環境依存</td></tr>
+<tr><td>先延ばし</td><td>行動キャンセル</td><td>デバフ</td></tr>
 <tr><td>やる気</td><td>全能力上昇</td><td>低確率発動</td></tr>
 </table>
 
@@ -149,47 +193,61 @@ MP<div class="bar" style="width:60%; background:blue;"></div>
 
 <!-- ボス -->
 <div id="boss" class="page">
-<h2>ボス情報</h2>
 
-<table class="table">
-<tr><th>名前</th><th>特徴</th><th>対策</th></tr>
-<tr>
-<td>締切</td>
-<td>突然出現・回避不可</td>
-<td>事前準備</td>
-</tr>
-<tr>
-<td>人間関係</td>
-<td>長期戦・精神ダメージ</td>
-<td>距離管理</td>
-</tr>
-<tr>
-<td>将来</td>
-<td>ラスボス候補・不明</td>
-<td>未確定</td>
-</tr>
-</table>
+<div class="breadcrumb">トップ > ボス</div>
+
+<h2>ボス攻略</h2>
+
+<div class="box">
+<h3>締切</h3>
+特徴：突然出現、回避不可<br>
+攻撃：精神ダメージ（大）<br>
+対策：事前準備、分割処理
+</div>
+
+<div class="box">
+<h3>人間関係</h3>
+特徴：長期戦<br>
+攻撃：継続ダメージ<br>
+対策：距離管理
+</div>
+
+<div class="box">
+<h3>将来</h3>
+特徴：ラスボス候補<br>
+状態：未解明
+</div>
 
 </div>
 
 <!-- バグ -->
 <div id="bug" class="page">
-<h2>バグ報告</h2>
+
+<div class="breadcrumb">トップ > バグ</div>
+
+<h2>既知のバグ</h2>
+
 <div class="box">
 ・やる気があるのに動けない<br>
 ・努力が反映されない<br>
 ・あと5分ループ<br>
+・本番でスキルが発動しない
 </div>
+
 </div>
 
 <!-- コメント -->
 <div id="comments" class="page">
+
+<div class="breadcrumb">トップ > コメント</div>
+
 <h2>コメント欄</h2>
 
 <textarea id="input"></textarea><br>
 <button onclick="addComment()">投稿</button>
 
 <div id="list"></div>
+
 </div>
 
 </div>
